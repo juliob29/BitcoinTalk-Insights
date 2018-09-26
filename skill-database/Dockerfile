@@ -6,7 +6,7 @@
 #
 #
 FROM timescale/timescaledb:0.10.1-pg10
-MAINTAINER Julio Ballista <jballista@forbes.com>
+MAINTAINER Julio Ballista <juliob@stanford.edu>
 
 #
 #  General environment variables. Most importantly,

@@ -5,7 +5,6 @@ import re
 import os
 import time 
 import gensim
-import pyforbes
 import schedule
 import plotly
 import plotly.plotly as py
