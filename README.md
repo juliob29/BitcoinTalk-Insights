@@ -1,13 +1,14 @@
 # BitcoinTalk Insights
 ![Coverage](https://img.shields.io/badge/coverage-96%25-green.svg?style=flat-square)
 
-This Bertie.ai skill adds cryptocurrency suggestions to the Insights Bar on Bertie. 
-The skill sifts through titles written by the user, and detects if there are
-cryptocurrencies mentioned. With this information, Bertie finds coins related 
-to the cryptocurrencies that the author writes about, and suggests them in the 
-`hover` section on the insights bar.
+This program can relate cryptocurrencies to one another, using Word2Vec.
 
-This Bertie.ai skill also uses a database, containing all of the messages from 
+
+The program takes text as input, detects a cryptocurrency.
+With this information, the program finds coins related 
+to the cryptocurrencies taken as input and suggests them to the user.
+
+This skill also uses a database, containing all of the messages from 
 the popular forum [BitcoinTalk](https://bitcointalk.org/) The database is used to train a Word2Vec model,
 which allows us to know related coins to a found cryptocurrency, based on the last
 week of forum messages.Related Cryptocurrencies are also shown, which come from the forum 'BitcoinTalk'. 
@@ -32,7 +33,7 @@ That endpoint takes the following parameters:
 All requests have to be made using `POST` and passing a JSON object with the key above.
 
 ### Example Response
-The skill returns a response in the following format.
+The program returns a response in the following format.
 
 ```json
 {
