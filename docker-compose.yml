@@ -1,0 +1,69 @@
+#
+#  Crypto DOCKER-COMPOSE
+#  --------------------
+#
+#  Here we configure the application stack
+#  that is deployed. It includes the database for the scraper,
+#  the scraper, and the main Crypto() application.
+#
+#    i.   Crypto App: a Python web-application
+#         that searches for cryptocurrencies and
+#         shows its last location. 
+#
+#    ii.  Crypto Postgres: a PostgreSQL instance
+#         that stores the Bitcointalk.org scraped messages
+#         to be used in the Word2Vec model.
+#
+#    iii. Crypto Scraper: A Python application that is able to scrape from 
+#         Bitcointalk.org and save the messages to a database. 
+#
+version: "2"
+
+services:
+    
+    crypto:
+        container_name: crypto
+        build: .
+        image: registry.dataproducts.team/skill-bitcointalk-insights:${VERSION}
+        restart: always
+        volumes:
+            - ./models:/models
+        ports:
+            - 8000:8000
+        env_file:
+            - .env
+        depends_on:
+            - database
+        networks:
+            - crypto
+
+    database:
+        container_name: scrape-database
+        build: ./skill-database/.
+        image: registry.dataproducts.team/skill-bitcointalk-insights-database:${VERSION}
+        restart: always
+        environment:
+            - .env
+        volumes:
+            - ./database_data:/var/lib/postgresql/data
+        networks:
+            - crypto
+        ports:
+            - 9000:5432
+
+    scraper:
+        container_name: scraper
+        build: ./skill-scraper/.
+        image: registry.dataproducts.team/skill-bitcointalk-insights-scraper:${VERSION}
+        restart: always
+        volumes:
+            - ./skill-scraper/.:/skill-scraper/
+        env_file:
+            - .env
+        depends_on:
+            - database
+        networks:
+            - crypto
+
+networks:
+    crypto:
