@@ -81,7 +81,7 @@ protobuf==3.5.2.post1
 ptyprocess==0.5.2
 py==1.5.4
 pyasn1==0.4.2
-Pygments==2.2.0
+Pygments==2.7.4
 PyMemoize==1.0.2
 pyparsing==2.2.0
 pytest==3.6.2
