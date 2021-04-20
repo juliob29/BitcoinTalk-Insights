@@ -79,7 +79,7 @@ progressbar33==2.4
 prompt-toolkit==1.0.15
 protobuf==3.5.2.post1
 ptyprocess==0.5.2
-py==1.5.4
+py==1.10.0
 pyasn1==0.4.2
 Pygments==2.2.0
 PyMemoize==1.0.2
